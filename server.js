@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-// const Travel = require('./models/travel.js');
+const Travel = require('./models/model.js');
 const app = express();
 
 let PORT = 3000;
@@ -15,24 +15,21 @@ app.use(cors()); //allow everyone to access your data
 
 
 // =======================================
-// const appRouter = require("./controllers/routes.js");
+const appRouter = require("./controllers/routes.js");
 
-//test route
-// app.get('/', (req, res)=>{
-//         res.send('hello');
-// });
-
-
-// app.use("/travel", appRouter);
+////test route
+app.get('/', (req, res)=>{
+        res.send('hello');
+});
+app.use("/travel", appRouter);
 
 ////drop database comment
 // mongoose.connection.dropDatabase();
 
 //=================================================
 // connections
-mongoose.connect('mongodb://localhost:27017/proj3')
-mongoose.connection.once('open', ()=>{
-    console.log('connected to mongod...');
+mongoose.connect('mongodb+srv://vrtisjames:NZLKOh1gH62iZn0d@cluster0.ctjxurb.mongodb.net/?retryWrites=true&w=majority', () => {
+  console.log('The connection with mongod is established')
 });
 
 app.listen(PORT, ()=>{
