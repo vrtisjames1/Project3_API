@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Travel = require('./models/model.js');
+const Students = require('./models/students.js');
 const app = express();
 
 let PORT = 3000;
@@ -18,10 +18,7 @@ app.use(cors()); //allow everyone to access your data
 const appRouter = require("./controllers/routes.js");
 
 ////test route
-app.get('/', (req, res)=>{
-        res.send('hello');
-});
-app.use("/travel", appRouter);
+app.use("/", appRouter);
 
 ////drop database comment
 // mongoose.connection.dropDatabase();

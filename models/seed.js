@@ -1,29 +1,25 @@
 module.exports =[
     {
-        "country": "USA",
-        "majorCities": [
-            "Fairbanks",
-            "Anchorage"
-        ],
-        "photos": [
-            "https://i.imgur.com/DP3l9GI.jpeg",
-            "https://i.imgur.com/72Pzrem.jpeg"
-        ],
-        "date": "Jan 1 2021",
-        "recommend": true,
+        "parent": "Paul",
+        "kid": "Jason",
+        "photo": "https://i.imgur.com/ypkhUkT.jpeg",
+        "update": [{"date": "01 March 2022", "Header": "Behavior", "Comments": "Jason was bad today"},
+        {"Date": "05 March 2022", "header": "Behavior", "comments": "Jason was better today"}],
     },
     {
-        "country": "Japan",
-        "majorCities": [
-            "Tokyo",
-            "Kyoto",
-            "Yokohama"
-        ],
-        "photos": [
-            "https://i.imgur.com/21vn60I.jpeg",
-            "https://i.imgur.com/C69RwlU.jpeg"
-        ],
-        "date": "Mar 7 2020",
-        "recommend": true,
-    }
+        "parent": "Karen",
+        "kid": "Phillip",
+        "photo": "https://i.imgur.com/zFocKSF.jpeg",
+        "update": [{"Date": "06 March 2022", "Header": "Goal Reached", "comments": "Phillip read at a 7th grade level today"},
+        {"date": "08 March 2022", "header": "Behavior", "comments": "Phillip read at an 8th grade level today"},
+        {"date": "09 March 2022", "header": "Behavior", "comments": "Phillip read at an 9th grade level today"}],
+    },
+    {
+        "parent": "Sue",
+        "kid": "Ashley",
+        "photo": "https://i.imgur.com/JHRGdXR.jpeg",
+        "update": [{"Date": "06 March 2022", "Header": "Goal Reached", "comments": "Ashley read at a 7th grade level today"},
+        {"date": "08 March 2022", "header": "Behavior", "comments": "Ashley read at an 8th grade level today"},
+        {"date": "09 March 2022", "header": "Behavior", "comments": "Ashley read at an 9th grade level today"}],
+    },
 ]
