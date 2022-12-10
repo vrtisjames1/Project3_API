@@ -61,5 +61,25 @@ router.put('/status/:id', (req, res)=>{
 });
 
 //============================================
+//edit comments
+router.get('/comments/:id', (req, res)=>{
+    Students.findOne({"status._id": req.params.id, "status": {"$elemMatch": {"_id": req.params.id}}} , (err, foundStudents)=>{
+        res.json(foundStudents);
+    });
+});
+
+// {"status": {"$elemMatch": {"_id": req.params.id}}}, {"status": {"$elemMatch": {"_id": req.params.id}}, "_id":0 }
+
+router.put('/comments/:id', (req, res)=>{
+    Students.findOneAndUpdate({"status._id" : req.params.id},{$set : {"status.$[t].comments" : req.body.comments}},{arrayFilters : [{"t._id" : req.params.id}]}, (err, updatedComments)=>{
+        res.json(updatedComments);
+    });
+});
+
+// {projection: {"status": {"$elemMatch": {"_id": req.params.id}}, "_id":0 }}
+// {"status._id": req.params.id}, { "$set": {"status": {"date": "50"}}, "status": {"$elemMatch": {"_id": req.params.id}}}, {new:true}
+
+
+//============================================
 //export
 module.exports = router;
