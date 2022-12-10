@@ -10,7 +10,7 @@ module.exports =[
         "parent": "Karen",
         "kid": "Phillip",
         "photo": "https://i.imgur.com/zFocKSF.jpeg",
-        "status": [{"Date": "06 March 2022", "Header": "Goal Reached", "comments": "Phillip read at a 7th grade level today"},
+        "status": [{"date": "08 March 2022", "header": "Behavior", "comments": "Phillip read at an 7th grade level today"},
         {"date": "08 March 2022", "header": "Behavior", "comments": "Phillip read at an 8th grade level today"},
         {"date": "09 March 2022", "header": "Behavior", "comments": "Phillip read at an 9th grade level today"}],
     },
