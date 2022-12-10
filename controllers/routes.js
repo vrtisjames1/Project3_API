@@ -46,5 +46,20 @@ router.put('/:id', (req, res)=>{
 });
 
 //============================================
+//create index route
+router.get('/status', (req, res)=>{
+    Students.find({},{status: 1}, (err, foundStudents)=>{
+        res.json(foundStudents);
+    });
+});
+
+//create update route
+router.put('/status:id', (req, res)=>{
+    Students.findByIdAndUpdate({status: req.params.id}, req.body, {new:true}, (err, updatedStudents)=>{
+        res.json(updatedStudents);
+    });
+});
+
+//============================================
 //export
 module.exports = router;
