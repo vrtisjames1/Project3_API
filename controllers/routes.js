@@ -76,9 +76,13 @@ router.put('/comments/:id', (req, res)=>{
     });
 });
 
-// {projection: {"status": {"$elemMatch": {"_id": req.params.id}}, "_id":0 }}
-// {"status._id": req.params.id}, { "$set": {"status": {"date": "50"}}, "status": {"$elemMatch": {"_id": req.params.id}}}, {new:true}
-
+// ==========================================
+//filter results
+router.get('/find/:id', (req, res)=>{
+    Students.find({"_id": req.params.id}, (err, foundStudents)=>{
+        res.json(foundStudents);
+    });
+});
 
 //============================================
 //export
