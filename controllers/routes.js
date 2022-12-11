@@ -76,6 +76,13 @@ router.put('/comments/:id', (req, res)=>{
     });
 });
 
+//create delete route
+router.put('/deletecomments/:id', (req, res)=>{
+    Students.findOneAndUpdate({"status._id" : req.params.id},{$pull : {"status": {"_id": req.params.id}}}, (err, deletedStudents)=>{
+        res.json(deletedStudents);
+    });
+});
+
 // ==========================================
 //filter results
 router.get('/find/:id', (req, res)=>{
