@@ -32,17 +32,12 @@ app.use("/", appRouter);
 
 //=================================================
 // connections
-mongoose.connect(process.env.MONGO_PROD_URI
-, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  }, 
-  () => {
-    console.log('the connection with mongod is established')
-  }
-)
+mongoose.connect("mongodb+srv://vrtisjames:NZLKOh1gH62iZn0d@cluster0.ctjxurb.mongodb.net/?retryWrites=true&w=majority",{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database connected!"))
+  .catch(err => console.log(err));
 
 app.listen(PORT, ()=>{
 	console.log('listening');
