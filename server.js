@@ -17,6 +17,7 @@ app.use(methodOverride('_method'));
 
 
 // =======================================
+const userController = require("./controllers/users_controllers.js");
 const appRouter = require("./controllers/routes.js");
 
 ////test route
