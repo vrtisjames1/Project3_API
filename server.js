@@ -11,6 +11,7 @@ if(process.env.PORT){
 }
 
 //creates rect.body off of url encoded data
+app.use(express.urlencoded({extended:true}));
 app.use(express.json()); //use .json(), not .urlencoded()
 app.use(cors()); //allow everyone to access your data
 app.use(methodOverride('_method'));
