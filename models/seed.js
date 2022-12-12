@@ -1,6 +1,7 @@
 module.exports =[
     {
-        "parent": "Paul",
+        "username": "Paul",
+        "admin": false,
         "confirm": false,
         "kid": "Jason",
         "photo": "https://i.imgur.com/ypkhUkT.jpeg",
@@ -8,7 +9,8 @@ module.exports =[
         {"date": "05 March 2022", "header": "Behavior", "comments": "Jason was better today"}],
     },
     {
-        "parent": "Karen",
+        "username": "Karen",
+        "admin": false,
         "confirm": false,
         "kid": "Phillip",
         "photo": "https://i.imgur.com/zFocKSF.jpeg",
@@ -17,7 +19,8 @@ module.exports =[
         {"date": "09 March 2022", "header": "Behavior", "comments": "Phillip read at an 9th grade level today"}],
     },
     {
-        "parent": "Sue",
+        "username": "Sue",
+        "admin": false,
         "confirm": false,
         "kid": "Ashley",
         "photo": "https://i.imgur.com/JHRGdXR.jpeg",
