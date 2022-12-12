@@ -9,6 +9,7 @@ module.exports =[
     },
     {
         "parent": "Karen",
+        "confirm": false,
         "kid": "Phillip",
         "photo": "https://i.imgur.com/zFocKSF.jpeg",
         "status": [{"date": "08 March 2022", "header": "Behavior", "comments": "Phillip read at an 7th grade level today"},
@@ -17,6 +18,7 @@ module.exports =[
     },
     {
         "parent": "Sue",
+        "confirm": false,
         "kid": "Ashley",
         "photo": "https://i.imgur.com/JHRGdXR.jpeg",
         "status": [{"date": "06 March 2022", "header": "Goal Reached", "comments": "Ashley read at a 7th grade level today"},
