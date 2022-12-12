@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const cors = require('cors');
 const Students = require('./models/students.js');
+const User = require('./models/users.js')
 const app = express();
 
 let PORT = 3000;
@@ -31,7 +32,7 @@ app.use("/", appRouter);
 
 //=================================================
 // connections
-mongoose.connect('mongodb+srv://vrtisjames:NZLKOh1gH62iZn0d@cluster0.ctjxurb.mongodb.net/?retryWrites=true&w=majority'
+mongoose.connect(process.env.MONGO_PROD_URI
 , {
     useNewUrlParser: true,
     useUnifiedTopology: true,
