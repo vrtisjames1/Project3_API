@@ -38,10 +38,11 @@ mongoose.connect(process.env.MONGO_PROD_URI
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
+  }, 
+  () => {
+    console.log('the connection with mongod is established')
   }
-  , () => {
-  console.log('The connection with mongod is established')
-});
+)
 
 app.listen(PORT, ()=>{
 	console.log('listening');
