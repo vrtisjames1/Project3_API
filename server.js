@@ -17,11 +17,11 @@ app.use(methodOverride('_method'));
 
 
 // =======================================
-// const userController = require("./controllers/users_controllers.js");
+const userController = require("./controllers/users_controllers.js");
 const appRouter = require("./controllers/routes.js");
 
 ////test route
-// app.use('/login', userController);
+app.use('/login', userController);
 app.use("/", appRouter);
 
 
@@ -31,12 +31,12 @@ app.use("/", appRouter);
 //=================================================
 // connections
 mongoose.connect('mongodb+srv://vrtisjames:NZLKOh1gH62iZn0d@cluster0.ctjxurb.mongodb.net/?retryWrites=true&w=majority'
-// , {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false,
-//     useCreateIndex: true,
-//   }
+, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  }
   , () => {
   console.log('The connection with mongod is established')
 });
