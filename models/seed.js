@@ -1,6 +1,7 @@
 module.exports =[
     {
         "parent": "Paul",
+        "confirm": false,
         "kid": "Jason",
         "photo": "https://i.imgur.com/ypkhUkT.jpeg",
         "status": [{"date": "01 March 2022", "header": "Behavior", "comments": "Jason was bad today"},
