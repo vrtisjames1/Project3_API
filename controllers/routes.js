@@ -26,7 +26,7 @@ router.post('/', (req, res)=>{
     });
 });
 
-user.put('/login', (req, res) => {
+router.put('/login', (req, res) => {
     console.log(req.body);
     Students.findOne({username: req.body.username}, (err, foundUser) => {
       if(err) {
