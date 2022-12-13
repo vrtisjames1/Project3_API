@@ -18,7 +18,7 @@ const studentSeed = require('../models/seed.js');
 // })
 
 //============================================
-//routes
+//ogin
 router.post('/', (req, res)=>{
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     Students.create(req.body, (err, createdStudents)=>{
@@ -43,6 +43,20 @@ router.put('/login', (req, res) => {
     })
   });
 
+  router.post('/createaccount', (req, res) => {
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+    Students.create(req.body, (err, createdUser) => {
+      if(err){
+        console.log(err);
+        res.json(err.message)
+      } else {
+        console.log('user is created', createdUser);
+        res.json(createdUser)
+      }
+    })
+  });
+
+//=========================================================
 //create index route
 router.get('/', (req, res)=>{
     Students.find({}, (err, foundStudents)=>{
