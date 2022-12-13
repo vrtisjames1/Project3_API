@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 //============================================
 //required
@@ -19,6 +20,7 @@ const studentSeed = require('../models/seed.js');
 //============================================
 //routes
 router.post('/', (req, res)=>{
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     Students.create(req.body, (err, createdStudents)=>{
         res.json(createdStudents); //.json() will send proper headers in response so client knows it's json coming back
     });

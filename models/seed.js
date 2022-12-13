@@ -1,6 +1,7 @@
 module.exports =[
     {
         "username": "Paul",
+        "password": "1234",
         "admin": false,
         "confirm": false,
         "kid": "Jason",
@@ -10,6 +11,7 @@ module.exports =[
     },
     {
         "username": "Karen",
+        "password": "1234",
         "admin": false,
         "confirm": false,
         "kid": "Phillip",
@@ -20,6 +22,7 @@ module.exports =[
     },
     {
         "username": "Sue",
+        "password": "1234",
         "admin": false,
         "confirm": false,
         "kid": "Ashley",

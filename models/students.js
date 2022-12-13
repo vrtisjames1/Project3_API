@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
     username: String,
+    password: String,
     admin: {type: Boolean, default: false},
     confirm: {type: Boolean, default: false},
     kid: String,
