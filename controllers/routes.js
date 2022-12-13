@@ -74,10 +74,16 @@ router.delete('/:id', (req, res)=>{
 //create update route
 //confirm with changes tommorrow
 router.put('/:id', (req, res)=>{
-    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-    Students.findByIdAndUpdate(req.params.id, {username: req.body.user, admin: req.body.admin, confirm: req.body.confirm, kid: req.body.kid, photo: req.body.photo, status: eq.body.status}, {new:true}, (err, updatedStudents)=>{
+    Students.findByIdAndUpdate(req.params.id, {username: req.body.user, admin: req.body.admin, confirm: req.body.confirm, kid: req.body.kid, photo: req.body.photo, status: req.body.status}, {new:true}, (err, updatedStudents)=>{
         res.json(updatedStudents);
     });
+});
+
+router.put('/password/:id', (req, res)=>{
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+  Students.findByIdAndUpdate(req.params.id, {username: req.body.user, password: req.body.password, admin: req.body.admin, confirm: req.body.confirm, kid: req.body.kid, photo: req.body.photo, status: req.body.status}, {new:true}, (err, updatedStudents)=>{
+      res.json(updatedStudents);
+  });
 });
 
 //============================================
