@@ -75,7 +75,7 @@ router.delete('/:id', (req, res)=>{
 //confirm with changes tommorrow
 router.put('/:id', (req, res)=>{
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-    Students.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedStudents)=>{
+    Students.findByIdAndUpdate(req.params.id, req.body, { password: 0 }, {new:true}, (err, updatedStudents)=>{
         res.json(updatedStudents);
     });
 });
