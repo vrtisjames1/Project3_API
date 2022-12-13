@@ -4,6 +4,7 @@ const methodOverride = require('method-override');
 const cors = require('cors');
 const Students = require('./models/students.js');
 const app = express();
+require('dotenv').config();
 
 let PORT = 3000;
 if(process.env.PORT){
@@ -29,7 +30,7 @@ app.use("/", appRouter);
 
 //=================================================
 // connections
-mongoose.connect("mongodb+srv://vrtisjames:NZLKOh1gH62iZn0d@cluster0.ctjxurb.mongodb.net/?retryWrites=true&w=majority",{
+mongoose.connect(process.env.DB_URI,{
   useNewUrlParser: true,
   useUnifiedTopology: true,
   })
