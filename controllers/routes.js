@@ -35,7 +35,7 @@ router.put('/login', (req, res) => {
         if(!foundUser){
           res.json('Username and password do not match. Please try again.')
         } else if(bcrypt.compareSync(req.body.password, foundUser.password)) {
-          res.json({username: foundUser.username, admin: foundUser.admin})
+          res.json({foundUser})
         } else {
           res.json('Username and password do not match. Please try again.')
         }
