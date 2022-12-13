@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const cors = require('cors');
 const Students = require('./models/students.js');
-const User = require('./models/users.js')
 const app = express();
 
 let PORT = 3000;
@@ -19,11 +18,9 @@ app.use(methodOverride('_method'));
 
 
 // =======================================
-const userController = require("./controllers/users_controllers.js");
 const appRouter = require("./controllers/routes.js");
 
 ////test route
-app.use('/login', userController);
 app.use("/", appRouter);
 
 
