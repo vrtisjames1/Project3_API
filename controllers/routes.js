@@ -103,16 +103,16 @@ router.put('/status/:id', (req, res)=>{
 
 //============================================
 //edit comments
-router.get('/comments/:id', (req, res)=>{
-    Students.findOne({"status._id": req.params.id, "status": {"$elemMatch": {"_id": req.params.id}}} , (err, foundStudents)=>{
-        res.json(foundStudents);
-    });
-});
+// router.get('/comments/:id', (req, res)=>{
+//     Students.findOne({"status._id": req.params.id, "status": {"$elemMatch": {"_id": req.params.id}}} , (err, foundStudents)=>{
+//         res.json(foundStudents);
+//     });
+// });
 
 // {"status": {"$elemMatch": {"_id": req.params.id}}}, {"status": {"$elemMatch": {"_id": req.params.id}}, "_id":0 }
 
 router.put('/comments/:id', (req, res)=>{
-    Students.findOneAndUpdate({"status._id" : req.params.id},{$set : {"status.$[t].comments" : req.body.comments}},{arrayFilters : [{"t._id" : req.params.id}]}, (err, updatedComments)=>{
+    Students.findOneAndUpdate({"status._id" : req.params.id},{$set : {"status.$[t].comments" : req.body.comments, "confirm": false}},{arrayFilters : [{"t._id" : req.params.id}]}, (err, updatedComments)=>{
         res.json(updatedComments);
     });
 });
