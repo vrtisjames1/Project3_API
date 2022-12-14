@@ -96,7 +96,7 @@ router.get('/status', (req, res)=>{
 
 //create update route
 router.put('/status/:id', (req, res)=>{
-    Students.findByIdAndUpdate(req.params.id, {"$push": {status: {date: req.body.date, header: req.body.header, comments: req.body.comments}} }, {new:true}, (err, updatedStudents)=>{
+    Students.findByIdAndUpdate(req.params.id,{"$set": {confirm: false}}, {"$push": {status: {date: req.body.date, header: req.body.header, comments: req.body.comments}} }, {new:true}, (err, updatedStudents)=>{
         res.json(updatedStudents);
     });
 });
