@@ -112,7 +112,7 @@ router.put('/status/:id', (req, res)=>{
 // {"status": {"$elemMatch": {"_id": req.params.id}}}, {"status": {"$elemMatch": {"_id": req.params.id}}, "_id":0 }
 
 router.put('/comments/:id', (req, res)=>{
-    Students.findOneAndUpdate(req.params.id, {$set : {"status.$[t].comments" : req.body.comments, "confirm": req.body.confirm}},{arrayFilters : [{"t._id" : req.params.id}]},{new:true}, (err, updatedComments)=>{
+    Students.findOneAndUpdate({"status._id" : req.params.id}, {$set : {"status.$[t].comments" : req.body.comments }},{arrayFilters : [{"t._id" : req.params.id}]}, (err, updatedComments)=>{
         res.json(updatedComments);
     });
 });
