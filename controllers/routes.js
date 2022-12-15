@@ -17,15 +17,18 @@ const studentSeed = require('../models/seed.js');
 //   console.log(`added provided studetn data`)
 // })
 
-//============================================
-//ogin
+//==================================================
+// unsure if currently being used
+//==================================================
 router.post('/', (req, res)=>{
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     Students.create(req.body, (err, createdStudents)=>{
         res.json(createdStudents); //.json() will send proper headers in response so client knows it's json coming back
     });
 });
-
+//==================================================
+// login route to find 
+//==================================================
 router.put('/login', (req, res) => {
     console.log(req.body);
     Students.findOne({username: req.body.username}, (err, foundUser) => {
@@ -43,6 +46,9 @@ router.put('/login', (req, res) => {
     })
   });
 
+  //==================================================
+  // create account route hidden on page
+  //==================================================
   router.post('/createaccount', (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
     Students.create(req.body, (err, createdUser) => {
@@ -56,29 +62,36 @@ router.put('/login', (req, res) => {
     })
   });
 
-//=========================================================
+//==================================================
 //create index route
+//==================================================
 router.get('/', (req, res)=>{
     Students.find({}, (err, foundStudents)=>{
         res.json(foundStudents);
     });
 });
 
-//create delete route
+//==================================================
+//delete profile route
+//==================================================
 router.delete('/:id', (req, res)=>{
     Students.findByIdAndRemove(req.params.id, (err, deletedStudents)=>{
         res.json(deletedStudents);
     });
 });
 
-//create update route
-//confirm with changes tommorrow
+//==================================================
+//update route to update all information except for password
+//==================================================
 router.put('/:id', (req, res)=>{
     Students.findByIdAndUpdate(req.params.id, {username: req.body.user, admin: req.body.admin, confirm: req.body.confirm, kid: req.body.kid, photo: req.body.photo, status: req.body.status}, {new:true}, (err, updatedStudents)=>{
         res.json(updatedStudents);
     });
 });
 
+//==================================================
+// update new password route
+//==================================================
 router.put('/password/:id', (req, res)=>{
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
   Students.findByIdAndUpdate(req.params.id, {username: req.body.user, password: req.body.password, admin: req.body.admin, confirm: req.body.confirm, kid: req.body.kid, photo: req.body.photo, status: req.body.status}, {new:true}, (err, updatedStudents)=>{
@@ -86,30 +99,26 @@ router.put('/password/:id', (req, res)=>{
   });
 });
 
-//============================================
-//create index route
+//==================================================
+//not sure if currentl being used
+//==================================================
 router.get('/status', (req, res)=>{
     Students.find({},{status: 1}, (err, foundStudents)=>{
         res.json(foundStudents);
     });
 });
-
-//create update route
+//==================================================
+//create commentes for nested status array
+//==================================================
 router.put('/status/:id', (req, res)=>{
     Students.findByIdAndUpdate(req.params.id, {"$push": {status: {date: req.body.date, header: req.body.header, comments: req.body.comments}}, "$set": {confirm: false}}, {new:true}, (err, updatedStudents)=>{
         res.json(updatedStudents);
     });
 });
 
-//============================================
-//edit comments
-// router.get('/comments/:id', (req, res)=>{
-//     Students.findOne({"status._id": req.params.id, "status": {"$elemMatch": {"_id": req.params.id}}} , (err, foundStudents)=>{
-//         res.json(foundStudents);
-//     });
-// });
-
-// {"status": {"$elemMatch": {"_id": req.params.id}}}, {"status": {"$elemMatch": {"_id": req.params.id}}, "_id":0 }
+//==================================================
+//edit comments in nested status array
+//==================================================
 
 router.put('/comments/:id', (req, res)=>{
     Students.findOneAndUpdate({"status._id" : req.params.id},{$set : {"status.$[t].comments" : req.body.comments}},{arrayFilters : [{"t._id" : req.params.id}]}, (err, updatedComments)=>{
@@ -117,21 +126,25 @@ router.put('/comments/:id', (req, res)=>{
     });
 });
 
-//create delete route
+//==================================================
+//delete comments in nested array
+//==================================================
 router.put('/deletecomments/:id', (req, res)=>{
     Students.findOneAndUpdate({"status._id" : req.params.id},{$pull : {"status": {"_id": req.params.id}}}, (err, deletedStudents)=>{
         res.json(deletedStudents);
     });
 });
 
-// ==========================================
-//filter results
+//==================================================
+//filter results to display on page
+//==================================================
 router.get('/find/:id', (req, res)=>{
     Students.find({"_id": req.params.id}, (err, foundStudents)=>{
         res.json(foundStudents);
     });
 });
 
-//============================================
+//==================================================
 //export
+//==================================================
 module.exports = router;
