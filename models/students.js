@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
-    parent: String,
+    username: String,
+    password: String,
+    admin: {type: Boolean, default: false},
+    confirm: {type: Boolean, default: false},
     kid: String,
     photo: String,
     status: [{date: String, header: String, comments: String}],

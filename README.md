@@ -1,7 +1,10 @@
 # Project3_API
 API for project 3
 
-instructions: BACKEND: npm init touch server.js npm i express
+instructions: BACKEND: 
+npm init 
+touch server.js 
+npm i express
 
 THEN: nodemon server.js
 
@@ -27,4 +30,22 @@ CHANGE: PUT > GET SEND Verify data has changed
 
 AFTER CORS IS INSTALLED: ADD: "Headers" add key of "origin" and value of "whatever.com"
 
-FRONT END: npx create-react-app front-end cd front-end npm start
+
+FRONT END: 
+npx create-react-app front-end 
+cd front-end 
+npm start
+
+
+##clone
+cd into Project3_API
+
+npm i
+
+create .env file
+
+add below in .env file: 
+DB_URI=mongodb+srv://vrtisjames:NZLKOh1gH62iZn0d@cluster0.ctjxurb.mongodb.net/?retryWrites=true&w=majority
+
+run locally with "nodemon server.js"
+
