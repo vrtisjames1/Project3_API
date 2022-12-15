@@ -18,7 +18,7 @@ const studentSeed = require('../models/seed.js');
 // })
 
 //==================================================
-// unsure if currently being used
+// create profile with password
 //==================================================
 router.post('/', (req, res)=>{
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
